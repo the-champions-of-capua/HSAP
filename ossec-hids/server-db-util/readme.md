@@ -169,7 +169,7 @@ FROM
 
 - 日志7表合1
 
-```
+```sql
 SELECT
 	cat_name,
 	LEVEL,
