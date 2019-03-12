@@ -22,14 +22,15 @@ def get_data_info():
     services = []
     for host_datas in hosts_datas:
         host_info = host_datas["address"]
+        print(host_datas)
         if type(host_info) != type([]):
             continue
+
         host_ip = [x["@addr"] for x in host_info if x["@addrtype"] == 'ipv4'][0]
         host_mac = [x["@addr"] for x in host_info if x["@addrtype"] == 'mac'][0]
         if "ports" in host_datas.keys():
             try:
                 port_info = host_datas["ports"]
-
                 for k, value in port_info.items():
                     if "port" == k:
                         for x in value:
@@ -105,6 +106,7 @@ def write_sql_2_sql():
     _sql_str_list = []
     ip_list = []
     for item in _datas:
+        print(item)
         if item["ip"] in existed_ips or item["ip"] in ip_list:
             continue
         _sql_str = "(\'" + "\',\'".join([str(item["ip"]),
@@ -129,7 +131,12 @@ def inital_sqls():
     sql_action("delete from dev_service;")
 
 
-if __name__ == '__main__':
+def task():
     # inital_sqls()
     write_sql_2_sql()
     write_data_to_dbs()
+
+if __name__ == '__main__':
+    task()
+
+    # print(get_data_info())

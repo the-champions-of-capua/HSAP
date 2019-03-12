@@ -1,6 +1,15 @@
 ## Centos下部署 SNMP
 
-- `yum -y install snmp-net snmp-net-utils*`
+- `yum -y install net-snmp*`
+
+```
+yum install -y net-snmp
+yum install -y net-snmp-devel
+yum install -y net-snmp-libs
+yum install -y net-snmp-perl
+yum install -y net-snmp-utils
+```
+- 注意通常习惯和 `mrtg` 结合进行监控 `yum install -y mrtg`
 
 
 ## 配置
